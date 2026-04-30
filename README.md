@@ -1,8 +1,4 @@
-# Stockify
-
-<p align="left">
-	<img src="assets/KBTU.avif" alt="University Logo" width="220" />
-</p>
+# Inventory Management System
 
 ![Project Status](https://img.shields.io/badge/status-inactive-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
