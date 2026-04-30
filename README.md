@@ -1,11 +1,10 @@
-# Inventory Management System
+# Stockify
 
 ![Project Status](https://img.shields.io/badge/status-inactive-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-> **_NOTE:_** This application was built as a Final Project under the discipline/course - **Basics of Information Systems** (INFT3107) at **Kazakh-British Technical University**, showcasing a complete understanding of modern full-stack development and cloud deployment practices.
 
-> **_PROJECT STATUS:_** This project is currently inactive. The live AWS-hosted website is no longer available because the AWS free plan credits/resources used for this project have ended, and the deployment is no longer supported under AWS free-tier usage. To experience the full website functionality, deploy and run the application locally on your own machine, then open it through localhost.
+> **_NOTE:_** This project is currently inactive. The live AWS-hosted website is no longer available because the AWS free plan credits/resources used for this project have ended, and the deployment is no longer supported under AWS free-tier usage. To experience the full website functionality, deploy and run the application locally on your own machine, then open it through localhost.
 
 ## Table of Contents
 - [Project Status](#project-status)
