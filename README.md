@@ -1,11 +1,18 @@
-# Inventory Management System
+# Stockify
 
-![Project Status](https://img.shields.io/badge/status-active-success.svg)
+<p align="left">
+	<img src="assets/KBTU.avif" alt="University Logo" width="220" />
+</p>
+
+![Project Status](https://img.shields.io/badge/status-inactive-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 > **_NOTE:_** This application was built as a Final Project under the discipline/course - **Basics of Information Systems** (INFT3107) at **Kazakh-British Technical University**, showcasing a complete understanding of modern full-stack development and cloud deployment practices.
 
+> **_PROJECT STATUS:_** This project is currently inactive. The live AWS-hosted website is no longer available because the AWS free plan credits/resources used for this project have ended, and the deployment is no longer supported under AWS free-tier usage. To experience the full website functionality, deploy and run the application locally on your own machine, then open it through localhost.
+
 ## Table of Contents
+- [Project Status](#project-status)
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Features](#features)
@@ -17,6 +24,12 @@
   - [Environment Setup](#environment-setup)
 - [Running the Application](#running-the-application)
 - [Deployment](#deployment)
+
+## Project Status
+
+This repository is kept for reference and local use. The previous live AWS deployment is inactive because all available AWS free-plan resources for this project have been used. The website is no longer maintained or supported as a live AWS-hosted service.
+
+For the complete experience, follow the setup instructions below and run the server and client locally. After starting both applications, open the local frontend in your browser at [http://localhost:3000](http://localhost:3000).
 
 ## Project Overview
 
@@ -151,9 +164,11 @@ cd client
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:8000) to view the application.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Deployment
+
+The original AWS-hosted deployment is no longer active because the AWS free plan resources used by this project have ended. The deployment notes below are retained for reference only. To use the application, run it locally through localhost as described above.
 
 ### AWS Cloud Architecture
 
