@@ -92,7 +92,7 @@ const Sidebar = () => {
         }`}
       >
         <Image
-          src="https://aws-s3-inventorymanagement-basicsofis.s3.eu-north-1.amazonaws.com/logo.png"
+          src="/assets/logo.png"
           alt="stockify-logo"
           width={27}
           height={27}

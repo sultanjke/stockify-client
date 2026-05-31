@@ -41,7 +41,7 @@ const CardPopularProducts = () => {
               >
                 <div className="flex items-center gap-3">
                   <Image
-                    src={`https://aws-s3-inventorymanagement-basicsofis.s3.eu-north-1.amazonaws.com/product${Math.floor(Math.random() * 3) + 1}.png`}
+                    src={`/assets/product${Math.floor(Math.random() * 3) + 1}.png`}
                     alt={product.name}
                     width={27}
                     height={27}

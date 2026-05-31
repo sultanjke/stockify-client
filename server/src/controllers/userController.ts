@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient, UserRole } from "@prisma/client";
 import { getDefaultRole } from "../utils/clerkUser";
-import { postUserSync } from "../utils/awsSync";
 
 const prisma = new PrismaClient();
 const hasProp = (obj: Record<string, unknown>, key: string) =>
@@ -78,19 +77,6 @@ export const updateUserRole = async (req: Request, res: Response): Promise<void>
     const updated = await prisma.users.update({
       where: { userId },
       data: { role: normalizedRole },
-    });
-
-    await postUserSync({
-      eventType: "user.updated",
-      userId: updated.userId,
-      email: updated.email,
-      firstName: updated.firstName,
-      lastName: updated.lastName,
-      name: updated.name,
-      imageUrl: updated.imageUrl,
-      role: updated.role,
-      lastSignInAt: updated.lastSignInAt,
-      createdAt: updated.createdAt,
     });
 
     res.json(updated);

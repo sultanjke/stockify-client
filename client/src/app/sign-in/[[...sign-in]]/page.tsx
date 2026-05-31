@@ -12,7 +12,7 @@ export default function Page() {
       <div className="mb-8 flex items-center gap-3">
         <div className="p-2 rounded-lg">
           <Image
-            src="https://aws-s3-inventorymanagement-basicsofis.s3.eu-north-1.amazonaws.com/logo.png"
+            src="/assets/logo.png"
             alt="Stockify Logo"
             width={40}
             height={40}

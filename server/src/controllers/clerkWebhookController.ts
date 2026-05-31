@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { Webhook } from "svix";
 import { PrismaClient } from "@prisma/client";
 import { getDefaultRole, mapClerkUser } from "../utils/clerkUser";
-import { postUserSync } from "../utils/awsSync";
 
 const prisma = new PrismaClient();
 
@@ -50,7 +49,6 @@ export const handleClerkWebhook = async (req: Request, res: Response): Promise<v
   try {
     if (eventType === "user.deleted") {
       await prisma.users.deleteMany({ where: { userId } });
-      await postUserSync({ eventType, userId });
       res.json({ status: "deleted" });
       return;
     }
@@ -62,7 +60,7 @@ export const handleClerkWebhook = async (req: Request, res: Response): Promise<v
         return;
       }
 
-      const upserted = await prisma.users.upsert({
+      await prisma.users.upsert({
         where: { userId },
         update: {
           email: mapped.email,
@@ -83,19 +81,6 @@ export const handleClerkWebhook = async (req: Request, res: Response): Promise<v
           createdAt: mapped.createdAt,
           role: getDefaultRole(userId),
         },
-      });
-
-      await postUserSync({
-        eventType,
-        userId: upserted.userId,
-        email: upserted.email,
-        firstName: upserted.firstName,
-        lastName: upserted.lastName,
-        name: upserted.name,
-        imageUrl: upserted.imageUrl,
-        role: upserted.role,
-        lastSignInAt: upserted.lastSignInAt,
-        createdAt: upserted.createdAt,
       });
 
       res.json({ status: "ok" });

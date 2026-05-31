@@ -1,9 +1,13 @@
 # Stockify
 
-![Project Status](https://img.shields.io/badge/status-active-green.svg)
+![Project Status](https://img.shields.io/badge/status-inactive-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+
+> **_NOTE:_** This project is currently inactive. The live AWS-hosted website is no longer available because the AWS free plan credits/resources used for this project have ended, and the deployment is no longer supported under AWS free-tier usage. To experience the full website functionality, deploy and run the application locally on your own machine, then open it through localhost.
+
 ## Table of Contents
+- [Project Status](#project-status)
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Features](#features)
@@ -16,13 +20,19 @@
 - [Running the Application](#running-the-application)
 - [Deployment](#deployment)
 
+## Project Status
+
+This repository is kept for reference and local use. The previous live AWS deployment is inactive because all available AWS free-plan resources for this project have been used. The website is no longer maintained or supported as a live AWS-hosted service.
+
+For the complete experience, follow the setup instructions below and run the server and client locally. After starting both applications, open the local frontend in your browser at [http://localhost:3000](http://localhost:3000).
+
 ## Project Overview
 
 This is a complete Full Stack Inventory Management Dashboard Application designed to streamline business operations. It allows users to track inventory, manage products, monitor sales and purchases, and view expense summaries through an interactive dashboard.
 
 The application is built using **Next.js** for a high-performance frontend, styled with **Tailwind CSS**, and utilizes **Material UI Data Grid** for handling complex datasets. State management is robustly handled by **Redux Toolkit** and **RTK Query**. The backend is powered by **Node.js** and **Express**, using **Prisma ORM** for seamless database interactions with PostgreSQL.
 
-The project is deployed on **Render** (free tier) with PostgreSQL database.
+The project also includes a comprehensive deployment strategy using **AWS** services including RDS, EC2, API Gateway, Amplify, and S3.
 
 ## Tech Stack
 
@@ -45,10 +55,13 @@ The project is deployed on **Render** (free tier) with PostgreSQL database.
 - **Database:** PostgreSQL
 - **Security/Utils:** Helmet, Morgan, Body-parser, Cors
 
-### Deployment (Render)
-- **Backend:** Render Web Service (Node.js)
-- **Frontend:** Render Web Service (Next.js)
-- **Database:** Render PostgreSQL (free tier)
+### DevOps & Cloud (AWS)
+- **Compute:** AWS EC2 (Backend hosting)
+- **Database:** AWS RDS (PostgreSQL)
+- **API Management:** AWS API Gateway
+- **Frontend Hosting:** AWS Amplify
+- **Storage:** AWS S3 (Image/File storage)
+- **Process Management:** PM2 (for Node.js on EC2)
 
 ## Features
 
@@ -150,34 +163,35 @@ Open [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Deployment
 
-This project uses Render for hosting. A `render.yaml` Blueprint is included for easy deployment.
+The original AWS-hosted deployment is no longer active because the AWS free plan resources used by this project have ended. The deployment notes below are retained for reference only. To use the application, run it locally through localhost as described above.
 
-### Deploy to Render
+### AWS Cloud Architecture
 
-1. **Create a Render account** at [render.com](https://render.com)
+<img width="816" height="520" alt="Frame 1" src="https://github.com/user-attachments/assets/64ef3af8-b6f2-4d27-8afc-fbc8ee3dbeb9" />
 
-2. **Connect your repository** and use the Blueprint feature:
-   - Go to Dashboard → New → Blueprint
-   - Select this repository
-   - Render will auto-detect `render.yaml` and create all services
+### AWS Deployment Strategy
 
-3. **Set environment variables** in Render dashboard:
-   - `CLERK_SECRET_KEY` - from Clerk dashboard
-   - `CLERK_WEBHOOK_SECRET` - from Clerk webhook settings
-   - `NEXT_PUBLIC_API_BASE_URL` - your server URL (e.g., `https://stockify-server.onrender.com`)
-   - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` - from Clerk dashboard
+1. **Database (RDS):**
+   - Set up a PostgreSQL instance on AWS RDS.
+   - Update `DATABASE_URL` in the server environment variables to point to the RDS endpoint.
 
-4. **Run database migrations** via Render shell:
-   ```bash
-   npx prisma migrate deploy
-   npm run seed
-   ```
+2. **Backend (EC2):**
+   - Launch an EC2 instance (e.g., Ubuntu).
+   - Install Node.js, NPM, and PM2.
+   - Clone the repo and setup the `server` directory.
+   - Use `ecosystem.config.js` to manage the process with PM2.
+   - Configure Security Groups to allow traffic on the API port.
 
-5. **Update Clerk webhook URL** to `https://<your-server>.onrender.com/webhooks/clerk`
+3. **API Gateway:**
+   - (Optional) Set up API Gateway to route requests to your EC2 instance for better management and security.
 
-### Free Tier Notes
-- Server spins down after 15 min inactivity (~30s cold start)
-- PostgreSQL: 1GB storage, 90-day retention
+4. **Frontend (Amplify):**
+   - Connect your repository to AWS Amplify.
+   - Configure build settings for Next.js.
+   - Set environment variables (`NEXT_PUBLIC_API_BASE_URL`) in the Amplify console to point to your EC2/API Gateway URL.
+
+5. **Storage (S3):**
+   - Create an S3 bucket for storing uploaded images or static assets if required.
 
 ---
 Contact me @ [Telegram](https://t.me/mecheyev)

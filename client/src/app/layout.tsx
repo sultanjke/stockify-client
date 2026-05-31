@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Stockify",
   description: "Inventory Management System",
   icons: {
-    icon: "https://aws-s3-inventorymanagement-basicsofis.s3.eu-north-1.amazonaws.com/logo.png",
+    icon: "/assets/logo.png",
   },
 };
 
