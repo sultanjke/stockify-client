@@ -179,5 +179,15 @@ This project uses Render for hosting. A `render.yaml` Blueprint is included for 
 - Server spins down after 15 min inactivity (~30s cold start)
 - PostgreSQL: 1GB storage, 90-day retention
 
+### Keeping the App Awake (Free Tier)
+
+Render free services spin down after 15 minutes of inactivity. The first visit then shows Render's "spinning up" interstitial. To avoid it, keep the **client** service warm with a free uptime monitor:
+
+1. Create a free monitor on [UptimeRobot](https://uptimerobot.com) (or [cron-job.org](https://cron-job.org)).
+2. Type: **HTTP(s)**, URL: `https://stockify-client.onrender.com/sign-in` (public page, returns 200 without an auth redirect).
+3. Interval: **5 minutes** (under the 15-min spin-down threshold).
+
+> Only the **client** is kept warm — keeping both services awake 24/7 (~1460 hrs/mo) would exceed the ~750 free instance-hours per workspace. The server is left to sleep; a built-in client-side loading screen (`ServerWakeGate`) polls `/health` and covers its cold start so users see a branded loader instead of a half-empty dashboard.
+
 ---
 Contact me @ [Telegram](https://t.me/mecheyev)

@@ -27,6 +27,8 @@ const translations: Record<Locale, TranslationDictionary> = {
     common: {
       appName: "Stockify",
       loading: "Loading...",
+      wakingUp: "Waking up the server — this can take up to a minute…",
+      wakingUpLong: "Almost there, thanks for your patience…",
       failedToFetch: "Failed to fetch data",
       cancel: "Cancel",
       create: "Create",
@@ -205,6 +207,8 @@ const translations: Record<Locale, TranslationDictionary> = {
     common: {
       appName: "Stockify",
       loading: "Загрузка...",
+      wakingUp: "Пробуждаем сервер — это может занять до минуты…",
+      wakingUpLong: "Почти готово, спасибо за терпение…",
       failedToFetch: "Не удалось получить данные",
       cancel: "Отмена",
       create: "Создать",

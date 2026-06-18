@@ -27,6 +27,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+/* HEALTH CHECK (no DB, used by the client wake-up gate and Render health checks) */
+app.get("/health", (_req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 /* ROUTES  */
 app.use("/dashboard", dashboardRoutes); // http://localhost:3001/dashboard
 app.use("/products", productRoutes); // http://localhost:3001/products
