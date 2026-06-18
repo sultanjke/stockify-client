@@ -14,7 +14,10 @@ const ServerWakeGate = ({ children }: { children: React.ReactNode }) => {
   const startedAt = useRef<number>(Date.now());
 
   useEffect(() => {
-    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    // Strip any trailing slash so `${baseUrl}/health` never becomes `//health`
+    // (a double slash 404s on Render). RTK Query normalizes this internally;
+    // our hand-built URL must do it explicitly.
+    const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/+$/, "");
 
     // No API URL configured (e.g. local without env) — don't block the UI.
     if (!baseUrl) {
